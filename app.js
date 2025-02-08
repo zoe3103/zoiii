@@ -1,10 +1,16 @@
-const express = require('express');
-const app = express();
+const express = require("express");
 
-app.get('/', (req, res) => {
-    res.send('Server is running');
+
+const app = express();
+app.set('view engine', 'pug')
+
+
+app.get("/", async (_req, res) => {
+   res.render('index', {message: "Hello World!"})
 });
 
-app.listen(3000, () => {
-    console.log('Server started on port 3000');
+
+const port = parseInt(process.env.PORT) || 8080;
+app.listen(port, async () => {
+   console.log(`Listening on port ${port}`);
 });
